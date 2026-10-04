@@ -216,6 +216,25 @@ h1{font-size:34px;margin:10px}
   100%{transform:translate3d(55px,115vh,0) rotate(360deg)}
 }
 
+
+.letter-section{
+  justify-content:flex-start;
+  padding-top:70px;
+  padding-bottom:120px;
+}
+.letter-card{
+  width:min(680px,92vw);
+  background:rgba(255,255,255,.88);
+  border-radius:28px;
+  padding:28px 24px 42px;
+  box-shadow:0 12px 35px rgba(180,70,115,.16);
+  text-align:left;
+}
+.letter-card .story-heart{text-align:center;font-size:58px}
+.letter-card h1{text-align:center;color:#d94f83;font-size:30px;margin:4px 0 28px}
+.letter-text{font-size:18px;line-height:1.85;color:#4b3040;white-space:pre-wrap;min-height:40vh}
+#memorySec{display:none}
+
 .music-fallback{position:fixed;right:16px;bottom:16px;z-index:9999;border:0;border-radius:999px;padding:12px 18px;background:#d85b82;color:white;font-size:15px;box-shadow:0 6px 20px rgba(0,0,0,.15)}
 </style>
 </head>
@@ -252,12 +271,20 @@ h1{font-size:34px;margin:10px}
 
 <section id="puzzleSec">
     <h1>Küçük Resmimizi Çöz ♡</h1>
-    <p class="small">İki kareye dokun ve yerlerini değiştir. Resim tamamlandığında sayfa açılır.</p>
+    <p class="small">İki kareye dokun ve yerlerini değiştir. Resim tamamlanmadan sonraki sayfaya geçemezsin.</p>
     <div class="puzzle" id="puzzle"></div>
-    <p id="done"></p>
+    <p id="done" class="small"></p>
   </section>
 
-  <section>
+  <section id="letterSec" class="letter-section" style="display:none">
+    <div class="letter-card">
+      <div class="story-heart">♥</div>
+      <h1>Cennet Kokulum</h1>
+      <div id="letterText" class="letter-text"></div>
+    </div>
+  </section>
+
+  <section id="memorySec" style="display:none">
     <h1>Küçük Anı Defterimiz</h1>
     <p class="small">Sayfaları çevirmek için dokun.</p>
     <div class="memory" onclick="nextMemory()">
@@ -358,8 +385,44 @@ function pick(i){
   [order[selected],order[i]]=[order[i],order[selected]];
   selected=null;
   buildPuzzle();
-  if(order.every((x,i)=>x===i))
-    document.getElementById('done').textContent='Resim tamamlandı ♥ Aşağıdaki anı defterine geçebilirsin.';
+  if(order.every((x,i)=>x===i)) finishPuzzle();
+}
+
+const letterMessage = `Cennet Kokulum Hayatımın en güzeli iyi ki si
+
+Zamanın nasıl bu kadar hızlı aktığına, seninle geçen her anın nasıl hem bir ömür gibi hissettirip hem de göz açıp kapayıncaya kadar bitiverdiğine inanamıyorum.
+
+Seninle tanıştığım o ilk anı, bana o ilk bakışını dün gibi hatırlıyorum. O gün, hayatımın geri kalanının çok daha parlak ve anlamlı olacağını hissetmiştim; yanılmamışım.
+Sen benim sadece sevgilim değil, en yakın arkadaşım, sırdaşım, fırtınalı günlerdeki sığınağım ve en huzurlu yuvam oldun. Birlikte güldüğümüzde dünyayı titreten kahkahalarımız, kelimelere ihtiyaç duymadan sessizce yan yana durduğumuzdaki o derin bağ... Hepsi benim için paha biçilemez.`;
+
+let letterStarted=false;
+function finishPuzzle(){
+  if(letterStarted) return;
+  letterStarted=true;
+  document.getElementById('done').textContent='♥';
+  const letter=document.getElementById('letterSec');
+  letter.style.display='flex';
+  setTimeout(()=>{
+    letter.scrollIntoView({behavior:'smooth',block:'start'});
+    typeLetter();
+  },350);
+}
+
+function typeLetter(){
+  const box=document.getElementById('letterText');
+  box.textContent='';
+  let i=0;
+  const speed=34;
+  function step(){
+    if(i>=letterMessage.length){
+      document.getElementById('memorySec').style.display='flex';
+      return;
+    }
+    box.textContent += letterMessage[i++];
+    window.scrollTo({top:document.documentElement.scrollHeight,behavior:'smooth'});
+    setTimeout(step,speed);
+  }
+  step();
 }
 
 let page=0;
