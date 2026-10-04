@@ -751,10 +751,10 @@ function typeLetter(){
   function step(){
     if(i>=letterMessage.length){
       document.getElementById('memorySec').style.display='flex';
+      document.getElementById('memorySec').scrollIntoView({behavior:'smooth',block:'start'});
       return;
     }
     box.textContent += letterMessage[i++];
-    window.scrollTo({top:document.documentElement.scrollHeight,behavior:'smooth'});
     setTimeout(step,speed);
   }
   step();
