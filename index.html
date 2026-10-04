@@ -484,6 +484,11 @@ h1{font-size:34px;margin:10px}
   .counter-message{font-size:21px;margin-top:28px}
 }
 
+/* --- Story stage gates --- */
+#playlistSec{display:none;}
+#counterSec{display:none;}
+.stage-next{display:none;margin:22px auto 0;border:0;border-radius:999px;padding:14px 28px;background:#d72f69;color:#fff;font-size:16px;box-shadow:0 10px 24px rgba(215,47,105,.22);}
+.stage-next.show{display:block;}
 </style>
 </head>
 <body>
@@ -548,6 +553,7 @@ h1{font-size:34px;margin:10px}
       <button class="mem-nav" id="memNext" aria-label="Sonraki sayfa">→</button>
     </div>
     <p class="memory-hint">Sayfayı çevirmek için oka veya deftere dokun. ♡</p>
+    <button id="memoryContinue" class="stage-next">Şarkılarımıza geç ♡</button>
   </section>
 
 
@@ -577,6 +583,8 @@ h1{font-size:34px;margin:10px}
       <span class="song-play">▶</span>
     </button>
   </div>
+
+  <button id="playlistContinue" class="stage-next">Sayaçımıza geç ♡</button>
 </section>
 
 
@@ -674,6 +682,12 @@ function openSite(){
   if(p && p.catch) p.catch(()=>{
     document.getElementById('musicFallback').style.display='block';
   });
+
+  document.getElementById('memorySec').style.display='none';
+  document.getElementById('playlistSec').style.display='none';
+  document.getElementById('counterSec').style.display='none';
+  document.getElementById('memoryContinue').classList.remove('show');
+  document.getElementById('playlistContinue').classList.remove('show');
 
   shufflePuzzle();
   buildPuzzle();
@@ -786,15 +800,38 @@ function renderMemory(){
   spread.innerHTML=`<div class="memory-page left-page">${renderMemoryPart(data.left)}</div><div class="memory-page right-page">${renderMemoryPart(data.right)}</div>`;
   document.getElementById('memCount').textContent=`${page+1} / 5`;
   document.getElementById('memPrev').disabled=page===0;
-  document.getElementById('memNext').disabled=page===memoryPages.length-1;
+  document.getElementById('memNext').disabled=false;
+  const memoryContinue=document.getElementById('memoryContinue');
+  if(memoryContinue) memoryContinue.classList.toggle('show',page===memoryPages.length-1);
   spread.classList.remove('page-in');
   void spread.offsetWidth;
   spread.classList.add('page-in');
 }
-function nextMemory(){ if(page<memoryPages.length-1){page++;renderMemory();} }
+function nextMemory(){
+  if(page<memoryPages.length-1){
+    page++;
+    renderMemory();
+    return;
+  }
+  const playlist=document.getElementById('playlistSec');
+  playlist.style.display='block';
+  document.getElementById('playlistContinue').classList.add('show');
+  playlist.scrollIntoView({behavior:'smooth',block:'start'});
+}
 function prevMemory(){ if(page>0){page--;renderMemory();} }
 document.getElementById('memNext').addEventListener('click',nextMemory);
 document.getElementById('memPrev').addEventListener('click',prevMemory);
+document.getElementById('memoryContinue').addEventListener('click',()=>{
+  const playlist=document.getElementById('playlistSec');
+  playlist.style.display='block';
+  document.getElementById('playlistContinue').classList.add('show');
+  playlist.scrollIntoView({behavior:'smooth',block:'start'});
+});
+document.getElementById('playlistContinue').addEventListener('click',()=>{
+  const counter=document.getElementById('counterSec');
+  counter.style.display='block';
+  counter.scrollIntoView({behavior:'smooth',block:'start'});
+});
 document.getElementById('memoryBook').addEventListener('click',(e)=>{
   if(e.target.closest('button')) return;
   const r=e.currentTarget.getBoundingClientRect();
