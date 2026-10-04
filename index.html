@@ -340,6 +340,150 @@ h1{font-size:34px;margin:10px}
   background:rgba(255,255,255,.92);font-size:23px;z-index:2;box-shadow:0 3px 10px rgba(0,0,0,.16)
 }
 
+
+/* --- Love counter --- */
+.counter-section{
+  position:relative;
+  min-height:100svh;
+  overflow:hidden;
+  padding:54px 18px 70px;
+  background:
+    radial-gradient(circle at 18% 18%, rgba(255,180,205,.34), transparent 24%),
+    radial-gradient(circle at 84% 22%, rgba(255,200,215,.30), transparent 26%),
+    linear-gradient(180deg,#fff8fb 0%,#fff0f5 100%);
+  color:#3b2930;
+}
+.counter-section:before,
+.counter-section:after{
+  position:absolute;
+  content:'🌸';
+  pointer-events:none;
+  opacity:.38;
+  font-size:78px;
+  z-index:0;
+}
+.counter-section:before{left:-20px;top:20px;transform:rotate(-18deg)}
+.counter-section:after{right:-18px;bottom:25px;font-size:90px;transform:rotate(16deg)}
+.counter-petal{
+  position:absolute;
+  pointer-events:none;
+  opacity:.42;
+  font-size:30px;
+  animation:counterFloat 7s ease-in-out infinite;
+}
+.counter-petal:nth-of-type(1){left:8%;top:29%;animation-delay:-2s}
+.counter-petal:nth-of-type(2){right:8%;top:48%;animation-delay:-4s}
+.counter-petal:nth-of-type(3){left:12%;bottom:19%;animation-delay:-1s}
+.counter-petal:nth-of-type(4){right:14%;top:11%;animation-delay:-5s}
+@keyframes counterFloat{
+  0%,100%{transform:translateY(0) rotate(-8deg)}
+  50%{transform:translateY(-13px) rotate(9deg)}
+}
+.counter-inner{
+  width:min(760px,100%);
+  margin:0 auto;
+  position:relative;
+  z-index:1;
+}
+.counter-lead{
+  font-size:24px;
+  line-height:1.25;
+  font-weight:800;
+  margin:0 auto 18px;
+  max-width:700px;
+  color:#21191d;
+  text-shadow:1px 1px 0 #fff;
+}
+.counter-title{
+  font-family:Georgia,serif;
+  font-size:34px;
+  font-weight:400;
+  letter-spacing:.04em;
+  margin:0 0 28px;
+  color:#51343e;
+}
+.counter-title span{color:#d72f69}
+.counter-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:18px;
+  width:min(650px,100%);
+  margin:0 auto;
+}
+.counter-card{
+  min-height:190px;
+  border:1px solid rgba(221,78,126,.22);
+  border-radius:30px;
+  background:rgba(255,252,253,.88);
+  box-shadow:0 14px 35px rgba(168,74,103,.12), inset 0 0 0 1px rgba(255,255,255,.55);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  overflow:hidden;
+}
+.counter-card:after{
+  content:'♥';
+  position:absolute;
+  bottom:17px;
+  left:50%;
+  transform:translateX(-50%);
+  color:#e8799c;
+  font-size:18px;
+}
+.counter-number{
+  font-family:Georgia,serif;
+  color:#cb2762;
+  font-size:64px;
+  line-height:1;
+  font-weight:700;
+  letter-spacing:.02em;
+}
+.counter-label{
+  margin-top:16px;
+  color:#59464d;
+  font-size:17px;
+  letter-spacing:.25em;
+}
+.counter-message{
+  margin:34px auto 0;
+  max-width:650px;
+  padding:0 12px;
+  font-family:Georgia,serif;
+  font-style:italic;
+  font-size:25px;
+  line-height:1.55;
+  color:#5a3944;
+}
+.counter-heart{
+  display:block;
+  color:#dc4d7c;
+  font-style:normal;
+  font-size:29px;
+  margin-top:4px;
+}
+.counter-back{
+  margin-top:28px;
+  border:0;
+  border-radius:999px;
+  padding:15px 34px;
+  background:#d72f69;
+  color:#fff;
+  font-size:17px;
+  box-shadow:0 10px 24px rgba(215,47,105,.25);
+}
+@media(max-width:430px){
+  .counter-section{padding-left:15px;padding-right:15px}
+  .counter-lead{font-size:20px}
+  .counter-title{font-size:28px}
+  .counter-grid{gap:12px}
+  .counter-card{min-height:155px;border-radius:24px}
+  .counter-number{font-size:49px}
+  .counter-label{font-size:13px;margin-top:12px;letter-spacing:.19em}
+  .counter-message{font-size:21px;margin-top:28px}
+}
+
 </style>
 </head>
 <body>
@@ -432,6 +576,45 @@ h1{font-size:34px;margin:10px}
       </div>
       <span class="song-play">▶</span>
     </button>
+  </div>
+</section>
+
+
+<section id="counterSec" class="counter-section">
+  <span class="counter-petal">🌸</span>
+  <span class="counter-petal">🌷</span>
+  <span class="counter-petal">🌼</span>
+  <span class="counter-petal">🌸</span>
+
+  <div class="counter-inner">
+    <p class="counter-lead">Bu sadece bir sayfa değil, ikinizin hikâyesi. 💗</p>
+    <h2 class="counter-title">seninle geçen her saniye <span>♡</span></h2>
+
+    <div class="counter-grid" aria-live="polite">
+      <div class="counter-card">
+        <div id="loveDays" class="counter-number">0</div>
+        <div class="counter-label">GÜN</div>
+      </div>
+      <div class="counter-card">
+        <div id="loveHours" class="counter-number">00</div>
+        <div class="counter-label">SAAT</div>
+      </div>
+      <div class="counter-card">
+        <div id="loveMinutes" class="counter-number">00</div>
+        <div class="counter-label">DAKİKA</div>
+      </div>
+      <div class="counter-card">
+        <div id="loveSeconds" class="counter-number">00</div>
+        <div class="counter-label">SANİYE</div>
+      </div>
+    </div>
+
+    <div class="counter-message">
+      Seni bu kadar süredir seviyorum ve bunun tek bir saniyesine dahi pişman olmadım.
+      <span class="counter-heart">♡</span>
+    </div>
+
+    <button class="counter-back" onclick="document.getElementById('playlistSec').scrollIntoView({behavior:'smooth'})">← geri</button>
   </div>
 </section>
 
@@ -648,6 +831,29 @@ function closeVideo(e){
   document.body.style.overflow='';
 }
 document.addEventListener('keydown',e=>{if(e.key==='Escape') closeVideo();});
+
+
+const firstMetAt = new Date('2025-04-12T20:30:00+03:00');
+
+function updateLoveCounter(){
+  const now = new Date();
+  let diff = now.getTime() - firstMetAt.getTime();
+  if(diff < 0) diff = 0;
+
+  const totalSeconds = Math.floor(diff / 1000);
+  const days = Math.floor(totalSeconds / 86400);
+  const hours = Math.floor((totalSeconds % 86400) / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
+  const seconds = totalSeconds % 60;
+
+  document.getElementById('loveDays').textContent = days;
+  document.getElementById('loveHours').textContent = String(hours).padStart(2,'0');
+  document.getElementById('loveMinutes').textContent = String(minutes).padStart(2,'0');
+  document.getElementById('loveSeconds').textContent = String(seconds).padStart(2,'0');
+}
+
+updateLoveCounter();
+setInterval(updateLoveCounter,1000);
 
 </script>
 </body>
