@@ -268,9 +268,9 @@ h1{font-size:34px;margin:10px}
   </section>
 </div>
 
-<audio id="music" loop preload="auto">
-  <source src="Yal_n_Sensiz_Olmaz_Pa3tw3h_F5c.mp4" type="audio/mp4">
-</audio>
+<video id="music" loop playsinline preload="auto" style="position:fixed;width:1px;height:1px;opacity:0;pointer-events:none;left:-10px;top:-10px">
+  <source src="Yal_n_Sensiz_Olmaz_Pa3tw3h_F5c.mp4" type="video/mp4">
+</video>
 
 <script>
 const puzzleImage = "puzzle-photo.jpg";
@@ -305,7 +305,10 @@ function openSite(){
 
   const music=document.getElementById('music');
   music.currentTime=0;
-  music.play().catch(()=>{});
+  const p = music.play();
+  if(p && p.catch) p.catch(()=>{
+    // iPhone/Safari may require a second tap after the page transition.
+  });
 
   shufflePuzzle();
   buildPuzzle();
