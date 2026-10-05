@@ -11,65 +11,51 @@ body{background:#fff0f6;color:#222;overflow-x:hidden}
 #login{
   position:relative;
   width:100%;
-  min-height:100dvh;
-  height:100dvh;
+  min-height:100svh;
+  height:100svh;
+  background-image:url("76BDF8E6-0D68-4569-A5E8-779001633931.png");
+  background-size:100% 100%;
+  background-repeat:no-repeat;
+  background-position:center;
   overflow:hidden;
-  isolation:isolate;
-  background:#fff0f6;
-}
-
-#login:after,
-.main-menu:after{
-  content:"";
-  position:absolute;
-  inset:0;
-  z-index:-1;
-  background:linear-gradient(180deg,rgba(255,245,249,.10),rgba(255,235,243,.20));
-  pointer-events:none;
 }
 .login-input{
   position:absolute;
-  left:50%;
-  top:61%;
-  transform:translateX(-50%);
+  left:30%;
+  top:54.0%;
   z-index:100;
-  width:min(300px,72vw);
-  height:50px;
-  border:1px solid rgba(255,255,255,.72);
+  width:40.5%;
+  height:4.65%;
+  border:0;
   outline:0;
-  border-radius:999px;
-  background:rgba(255,255,255,.74);
-  backdrop-filter:blur(10px);
-  -webkit-backdrop-filter:blur(10px);
-  box-shadow:0 10px 30px rgba(145,54,91,.15);
+  border-radius:18px;
+  background:rgba(255,255,255,0);
+  box-shadow:none;
   text-align:center;
-  font-size:17px;
-  color:#8f3158;
-  caret-color:#8f3158;
-  padding:0 18px;
+  font-size:16px;
+  color:#9b3d62;
+  caret-color:#9b3d62;
+  padding:0 12px;
 }
 .login-input::placeholder{color:transparent}
 .login-button{
   position:absolute;
-  left:50%;
-  top:68%;
-  transform:translateX(-50%);
+  left:36.3%;
+  top:59.55%;
   z-index:100;
-  width:min(190px,48vw);
-  height:48px;
-  border:1px solid rgba(255,255,255,.45);
-  border-radius:999px;
-  background:rgba(205,47,104,.90);
-  color:white;
+  width:27.5%;
+  height:4.65%;
+  border:0;
+  border-radius:10px;
+  background:transparent;
+  color:transparent;
   font-size:17px;
-  font-weight:700;
-  box-shadow:0 12px 28px rgba(173,48,93,.24);
+  box-shadow:none;
   cursor:pointer;
 }
 
 
 #loginFlowers{
-  display:none;
   position:fixed;
   inset:0;
   z-index:20;
@@ -119,7 +105,6 @@ h1{font-size:34px;margin:10px}
 .pink{color:#e83e8c}.small{font-size:15px;opacity:.8}
 .story-heart{font-size:70px;color:#e83e8c}
 .flower{
-  display:none;
   position:fixed;
   top:-100px;
   font-size:78px;
@@ -504,116 +489,12 @@ h1{font-size:34px;margin:10px}
 #counterSec{display:none;}
 .stage-next{display:none;margin:22px auto 0;border:0;border-radius:999px;padding:14px 28px;background:#d72f69;color:#fff;font-size:16px;box-shadow:0 10px 24px rgba(215,47,105,.22);}
 .stage-next.show{display:block;}
-
-.main-menu{
-  position:relative;
-  overflow:hidden;
-  isolation:isolate;
-  background:#fff0f6;
-}
-.main-menu-content{
-  position:relative;
-  z-index:2;
-  width:min(680px,92vw);
-  padding:38px 24px;
-  border-radius:34px;
-  background:rgba(255,248,251,.46);
-  backdrop-filter:blur(3px);
-  -webkit-backdrop-filter:blur(3px);
-  box-shadow:0 18px 50px rgba(150,62,96,.10);
-}
-.main-menu .small{color:#4f3640}
-.main-menu h1{color:#33252b;text-shadow:0 1px 0 rgba(255,255,255,.8)}
-.main-menu .pink{color:#c92f68}
-.main-menu .story-heart{color:#dc4b7d}
-.main-menu .story-button{box-shadow:0 12px 28px rgba(215,47,105,.24)}
-
-
-/* --- CSS-only romantic floral animation (no video file needed) --- */
-#login, .main-menu{
-  position:relative;
-  overflow:hidden;
-  isolation:isolate;
-  background:
-    radial-gradient(circle at 50% 45%, rgba(255,255,255,.72), transparent 48%),
-    linear-gradient(180deg,#fff9fb 0%,#ffeaf2 100%);
-}
-#login:before, .main-menu:before{
-  content:"";
-  position:absolute;
-  inset:-12%;
-  z-index:-2;
-  background:
-    radial-gradient(circle at 12% 18%, rgba(244,151,181,.28) 0 24px, transparent 26px),
-    radial-gradient(circle at 88% 14%, rgba(245,166,193,.25) 0 34px, transparent 36px),
-    radial-gradient(circle at 8% 82%, rgba(244,151,181,.20) 0 40px, transparent 42px),
-    radial-gradient(circle at 92% 78%, rgba(244,151,181,.22) 0 48px, transparent 50px);
-  animation: floralGlow 9s ease-in-out infinite alternate;
-}
-#login:after, .main-menu:after{
-  content:"🌸     🌷        🌸       🌼       🌸       🌷     🌸";
-  position:absolute;
-  inset:-35px -80px;
-  z-index:-1;
-  color:rgba(218,83,127,.43);
-  font-size:34px;
-  letter-spacing:18px;
-  line-height:2.7;
-  white-space:pre-wrap;
-  transform:rotate(-7deg);
-  opacity:.72;
-  animation: floralDrift 15s ease-in-out infinite alternate;
-  pointer-events:none;
-  filter:drop-shadow(0 7px 10px rgba(206,76,119,.10));
-}
-.main-menu:after{font-size:31px;opacity:.60;animation-duration:18s;transform:rotate(7deg)}
-@keyframes floralDrift{
-  0%{transform:translate3d(-22px,-8px,0) rotate(-7deg)}
-  50%{transform:translate3d(10px,18px,0) rotate(-2deg)}
-  100%{transform:translate3d(24px,-4px,0) rotate(5deg)}
-}
-@keyframes floralGlow{
-  0%{transform:scale(1);opacity:.82}
-  100%{transform:scale(1.08);opacity:1}
-}
-.floral-petal{
-  position:absolute;
-  z-index:0;
-  width:24px;height:15px;
-  border-radius:100% 0 100% 0;
-  background:linear-gradient(135deg,#f7a8c3,#e878a0);
-  opacity:.34;
-  filter:blur(.1px);
-  box-shadow:0 3px 9px rgba(195,65,110,.10);
-  pointer-events:none;
-}
-.floral-petal:nth-child(1){left:7%;top:22%;transform:rotate(28deg);animation:petalFloat1 7s ease-in-out infinite}
-.floral-petal:nth-child(2){right:9%;top:30%;transform:rotate(-24deg);animation:petalFloat2 8s ease-in-out infinite}
-.floral-petal:nth-child(3){left:16%;bottom:21%;transform:rotate(-12deg);animation:petalFloat2 9s ease-in-out infinite -2s}
-.floral-petal:nth-child(4){right:15%;bottom:17%;transform:rotate(35deg);animation:petalFloat1 8s ease-in-out infinite -3s}
-.floral-petal:nth-child(5){left:46%;top:12%;transform:rotate(12deg);animation:petalFloat2 10s ease-in-out infinite -4s}
-@keyframes petalFloat1{
-  0%,100%{transform:translate(0,0) rotate(28deg)}
-  50%{transform:translate(18px,16px) rotate(58deg)}
-}
-@keyframes petalFloat2{
-  0%,100%{transform:translate(0,0) rotate(-24deg)}
-  50%{transform:translate(-15px,12px) rotate(8deg)}
-}
-
-
-#loginFloralDecor,#mainFloralDecor{position:absolute;inset:0;z-index:0;pointer-events:none}
-#login > *:not(#loginFloralDecor), .main-menu > *:not(#mainFloralDecor){position:relative;z-index:2}
-
 </style>
 </head>
 <body>
+<div id="loginFlowers" aria-hidden="true"></div>
+
 <section id="login" aria-label="Sudem ve Kadir giriş ekranı">
-  <div id="loginFloralDecor" aria-hidden="true">
-  <span class="floral-petal"></span><span class="floral-petal"></span>
-  <span class="floral-petal"></span><span class="floral-petal"></span>
-  <span class="floral-petal"></span>
-</div>
   <input id="pass" class="login-input" type="password" inputmode="numeric"
          maxlength="4" placeholder="Şifreyi gir..." aria-label="Şifre">
   <button class="login-button" onclick="openSite()">Giriş ♡</button>
@@ -621,21 +502,18 @@ h1{font-size:34px;margin:10px}
 </section>
 
 <div id="content">
+  <div class="flower" style="left:4%;animation-delay:0s">🌸</div>
+  <div class="flower" style="left:28%;animation-delay:1.5s">🌼</div>
+  <div class="flower" style="left:58%;animation-delay:3s">🌸</div>
+  <div class="flower" style="left:82%;animation-delay:4.5s">🌼</div>
 
-  <section class="main-menu">
-    <div id="mainFloralDecor" aria-hidden="true">
-  <span class="floral-petal"></span><span class="floral-petal"></span>
-  <span class="floral-petal"></span><span class="floral-petal"></span>
-  <span class="floral-petal"></span>
-</div>
-    <div class="main-menu-content">
+  <section>
     <p class="small">Üstte birlikte geçirilen güzel günler için</p>
     <h1>Sen hep buradasın</h1>
     <div class="story-heart">♥</div>
     <h1><span class="pink">Kalbimin İçinde</span></h1>
     <p class="small">Anılarımızdan, şarkılarımızdan ve seni sevme şansına sahip olduğum her saniyeden oluşan küçük bir dünya.</p>
     <button class="story-button" onclick="document.getElementById('puzzleSec').scrollIntoView({behavior:'smooth'})">Hikayemize Başla ♥</button>
-    </div>
   </section>
 
   
@@ -751,7 +629,7 @@ h1{font-size:34px;margin:10px}
 <div id="videoModal" class="video-modal" onclick="closeVideo(event)">
   <div class="video-box" onclick="event.stopPropagation()">
     <button class="video-close" onclick="closeVideo()">×</button>
-    
+    <video id="playlistVideo" controls playsinline preload="metadata"></video>
     <div class="video-meta">
       <strong id="videoTitle"></strong>
       <span id="videoArtist"></span>
@@ -761,20 +639,12 @@ h1{font-size:34px;margin:10px}
 
 </div>
 
-
-<!-- Sürekli ekranda duran, parmakla sürüklenebilen ikili -->
 <audio id="music" loop preload="auto">
   <source src="sensiz-olmaz.m4a" type="audio/mp4"><source src="Sensiz-olmaz.m4a" type="audio/mp4">
 </audio>
 <button id="musicFallback" class="music-fallback" style="display:none" onclick="startMusic()">🎵 Müziği Başlat</button>
 
 <script>
-// Giriş ekranı her açılışta en üstten başlasın.
-window.addEventListener("load",()=>{
-  try{ history.scrollRestoration="manual"; }catch(e){}
-  window.scrollTo(0,0);
-});
-
 const puzzleImage = "puzzle-photo.jpg";
 
 
