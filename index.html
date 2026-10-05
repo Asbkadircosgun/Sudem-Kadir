@@ -11,8 +11,8 @@ body{background:#fff0f6;color:#222;overflow-x:hidden}
 #login{
   position:relative;
   width:100%;
-  min-height:100svh;
-  height:100svh;
+  min-height:100dvh;
+  height:100dvh;
   overflow:hidden;
   isolation:isolate;
   background:#fff0f6;
@@ -822,6 +822,12 @@ h1{font-size:34px;margin:10px}
 <button id="musicFallback" class="music-fallback" style="display:none" onclick="startMusic()">🎵 Müziği Başlat</button>
 
 <script>
+// Giriş ekranı her açılışta en üstten başlasın.
+window.addEventListener("load",()=>{
+  try{ history.scrollRestoration="manual"; }catch(e){}
+  window.scrollTo(0,0);
+});
+
 const puzzleImage = "puzzle-photo.jpg";
 
 /* Sayfa kaydırıldıkça el ele koşan ikili: aşağı inerken aşağı, yukarı çıkarken yukarı. */
